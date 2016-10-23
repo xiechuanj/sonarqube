@@ -1,0 +1,43 @@
+#!groovy
+// The above triggers groovy syntax highlighting in vim
+
+plugins {
+ id "org.sonarqube" version "2.0.1"
+}
+
+/* To test a SNAPSHOT in the maven local repo:
+
+buildscript {
+    repositories {
+      mavenCentral()
+      mavenLocal()
+    }
+    dependencies { classpath 'org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.1-SNAPSHOT' }
+}
+
+apply plugin: 'org.sonarqube'
+*/
+
+apply plugin: 'groovy'
+
+group = 'org.sonarsource.example.groovy'
+description = 'Simple Groovy with Gradle'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+  compile 'org.codehaus.groovy:groovy-all:2.4.7'
+  testCompile "junit:junit:4.11"
+}
+
+
+repositories {
+  jcenter()
+  mavenLocal()
+  mavenCentral()
+  maven {
+    url "https://repox.sonarsource.com/sonarsource"
+  }
+}
+
